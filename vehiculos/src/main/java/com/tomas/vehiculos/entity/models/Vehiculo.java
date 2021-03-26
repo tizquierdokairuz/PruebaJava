@@ -2,6 +2,7 @@ package com.tomas.vehiculos.entity.models;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,12 +29,15 @@ public class Vehiculo implements Serializable {
 	private String codigo;
 	
 	@NotNull
+	@Column(name = "idTipo") 
 	private int idTipo;
 	
 	@NotNull
+	@Column(name = "idMarca") 
 	private int idMarca;
 	
 	@NotNull
+	@Column(name = "idCategoria")  
 	private int idCategoria;
 	
 	private String observaciones;
