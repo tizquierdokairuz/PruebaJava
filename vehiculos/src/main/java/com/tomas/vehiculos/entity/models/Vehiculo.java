@@ -95,6 +95,14 @@ public class Vehiculo implements Serializable {
 		this.vehiculoMarca = vehiculoMarca;
 	}
 
+	public VehiculoCategoria getVehiculoCategoria() {
+		return vehiculoCategoria;
+	}
+
+	public void setVehiculoCategoria(VehiculoCategoria vehiculoCategoria) {
+		this.vehiculoCategoria = vehiculoCategoria;
+	}
+
 	public Vehiculo(@NotEmpty String nombre, @NotEmpty String codigo, @NotEmpty VehiculoTipo vehiculoTipo, @NotNull VehiculoMarca vehiculoMarca, @NotNull VehiculoCategoria vehiculoCategoria, 
 			String observaciones) {
 		super();
