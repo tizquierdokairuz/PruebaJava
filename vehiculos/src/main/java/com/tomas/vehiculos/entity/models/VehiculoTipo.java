@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -29,9 +31,10 @@ public class VehiculoTipo implements Serializable{
 	private int velocidadMaxima;
 	
 	@NotNull
-	@Column(name = "idTipoCombustible") 
-	private int idTipoCombustible;
-
+	@ManyToOne()
+    @JoinColumn(name = "idTipoCombustible")
+    private TipoCombustible tipoCombustible;
+	
 	public int getId() {
 		return id;
 	}
@@ -56,19 +59,19 @@ public class VehiculoTipo implements Serializable{
 		this.velocidadMaxima = velocidadMaxima;
 	}
 
-	public int getIdTipoCombustible() {
-		return idTipoCombustible;
+	public TipoCombustible getTipoCombustible() {
+		return tipoCombustible;
 	}
 
-	public void setIdTipoCombustible(int idTipoCombustible) {
-		this.idTipoCombustible = idTipoCombustible;
+	public void setTipoCombustible(TipoCombustible tipoCombustible) {
+		this.tipoCombustible = tipoCombustible;
 	}
-
-	public VehiculoTipo(@NotEmpty String nombre, @NotNull int velocidadMaxima, @NotNull int idTipoCombustible) {
+	
+	public VehiculoTipo(@NotEmpty String nombre, @NotNull int velocidadMaxima, @NotNull TipoCombustible tipoCombustible) {
 		super();
 		this.nombre = nombre;
 		this.velocidadMaxima = velocidadMaxima;
-		this.idTipoCombustible = idTipoCombustible;
+		this.tipoCombustible = tipoCombustible;
 	}
 
 	public VehiculoTipo() {

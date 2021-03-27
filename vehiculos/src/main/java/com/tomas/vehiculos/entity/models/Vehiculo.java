@@ -2,11 +2,12 @@ package com.tomas.vehiculos.entity.models;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -29,20 +30,21 @@ public class Vehiculo implements Serializable {
 	private String codigo;
 	
 	@NotNull
-	@Column(name = "idTipo") 
-	private int idTipo;
+	@ManyToOne()
+    @JoinColumn(name = "idTipo")
+    private VehiculoTipo vehiculoTipo;
 	
 	@NotNull
-	@Column(name = "idMarca") 
-	private int idMarca;
+	@ManyToOne()
+    @JoinColumn(name = "idMarca")
+    private VehiculoMarca vehiculoMarca;
 	
 	@NotNull
-	@Column(name = "idCategoria")  
-	private int idCategoria;
+	@ManyToOne()
+    @JoinColumn(name = "idCategoria")
+    private VehiculoCategoria vehiculoCategoria;
 	
 	private String observaciones;
-
-	
 	
 	public int getId() {
 		return id;
@@ -68,30 +70,6 @@ public class Vehiculo implements Serializable {
 		this.codigo = codigo;
 	}
 
-	public int getIdTipo() {
-		return idTipo;
-	}
-
-	public void setIdTipo(int idTipo) {
-		this.idTipo = idTipo;
-	}
-
-	public int getIdMarca() {
-		return idMarca;
-	}
-
-	public void setIdMarca(int idMarca) {
-		this.idMarca = idMarca;
-	}
-
-	public int getIdCategoria() {
-		return idCategoria;
-	}
-
-	public void setIdCategoria(int idCategoria) {
-		this.idCategoria = idCategoria;
-	}
-
 	public String getObservaciones() {
 		return observaciones;
 	}
@@ -99,15 +77,32 @@ public class Vehiculo implements Serializable {
 	public void setObservaciones(String observaciones) {
 		this.observaciones = observaciones;
 	}
+	
 
-	public Vehiculo(@NotEmpty String nombre, @NotEmpty String codigo, @NotNull int idTipo, @NotNull int idMarca,
-			@NotNull int idCategoria, String observaciones) {
+	public VehiculoTipo getVehiculoTipo() {
+		return vehiculoTipo;
+	}
+
+	public void setVehiculoTipo(VehiculoTipo vehiculoTipo) {
+		this.vehiculoTipo = vehiculoTipo;
+	}
+
+	public VehiculoMarca getVehiculoMarca() {
+		return vehiculoMarca;
+	}
+
+	public void setVehiculoMarca(VehiculoMarca vehiculoMarca) {
+		this.vehiculoMarca = vehiculoMarca;
+	}
+
+	public Vehiculo(@NotEmpty String nombre, @NotEmpty String codigo, @NotEmpty VehiculoTipo vehiculoTipo, @NotNull VehiculoMarca vehiculoMarca, @NotNull VehiculoCategoria vehiculoCategoria, 
+			String observaciones) {
 		super();
 		this.nombre = nombre;
 		this.codigo = codigo;
-		this.idTipo = idTipo;
-		this.idMarca = idMarca;
-		this.idCategoria = idCategoria;
+		this.vehiculoTipo = vehiculoTipo;
+		this.vehiculoMarca = vehiculoMarca;
+		this.vehiculoCategoria = vehiculoCategoria;
 		this.observaciones = observaciones;
 	}
 
