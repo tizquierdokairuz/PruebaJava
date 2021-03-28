@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `vehiculocategoria`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `vehiculocategoria` (
   `id` smallint NOT NULL AUTO_INCREMENT,
-  `año` varchar(45) NOT NULL,
+  `clase` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_vehiculocategoria_id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
