@@ -20,7 +20,7 @@ public class VehiculoCategoria implements Serializable{
 	private int id;
 	
 	@NotNull
-	private int año;
+	private int clase;
 
 	public int getId() {
 		return id;
@@ -30,17 +30,17 @@ public class VehiculoCategoria implements Serializable{
 		this.id = id;
 	}
 
-	public int getAño() {
-		return año;
+	public int getClase() {
+		return clase;
 	}
 
-	public void setAño(int año) {
-		this.año = año;
+	public void setClase(int clase) {
+		this.clase = clase;
 	}
 
-	public VehiculoCategoria(@NotNull int año) {
+	public VehiculoCategoria(@NotNull int clase) {
 		super();
-		this.año = año;
+		this.clase = clase;
 	}
 
 	public VehiculoCategoria() {
