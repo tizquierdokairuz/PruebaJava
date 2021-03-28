@@ -2,15 +2,31 @@ plugins {
 	id 'org.springframework.boot' version '2.4.4'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+    id 'com.palantir.docker' version '0.26.0'
 }
 
 group = 'com.tomas'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+
+docker {
+	name "vehiculos"
+	dockerfile file('src/docker/Dockerfile')
+	copySpec.from(jar).rename(".*","app.jar")
+	buildArgs(['JAR_FILE': "app.jar"])
+}
+
 repositories {
 	mavenCentral()
 }
+
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -21,6 +37,8 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	compile("org.springframework.boot:spring-boot-starter-web")
 	compile("org.springframework.boot:spring-boot-starter-data-rest")
+	compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
 }
 
 test {
